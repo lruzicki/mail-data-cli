@@ -10,16 +10,23 @@ class EmailReader:
         self.list_of_correct_emails = []
         self.list_of_incorrect_emails = []       
 
+    def printEmails(self, emails_list, space):
+        for single_mail in emails_list:
+            print(single_mail.rjust(len(single_mail) + space))
+
     def incorrect_emails(self, directory):
         self.read_all_emails_from_directory(directory)
-        print(len(self.list_of_incorrect_emails))
-        for single_mail in self.list_of_incorrect_emails:
-            print(single_mail)
+        print("Invalid emails (",len(self.list_of_incorrect_emails),"):", sep = "")
+        self.printEmails(self.list_of_incorrect_emails, 4)
 
     def search_emails_by_text(self, text):
+        emails_found = []
         for email in self.list_of_correct_emails:
             if text in email:
-                print(email)
+                emails_found.append(email)
+        
+        print("Found emails with '", text,"' in email (", len(emails_found), "):", sep = "")
+        self.printEmails(emails_found, 4)
 
     def group_emails_by_domain(self):
         dict_of_mails = {}
@@ -33,7 +40,8 @@ class EmailReader:
         for key, val in dict_of_mails.items(): val.sort()
         dict_of_mails = dict(sorted(dict_of_mails.items()))
         for key, val in dict_of_mails.items():
-            print(key, val)
+            print("Domain ", key, " (", len(val) ,"):", sep = "")
+            self.printEmails(val, 4)
         
         del dict_of_mails
 
@@ -52,9 +60,8 @@ class EmailReader:
             if mail not in found_emails_in_logs:
                 not_found_emails_in_logs.append(mail)
 
-        print(len(not_found_emails_in_logs))
-        for mail in sorted(not_found_emails_in_logs):
-            print(mail)
+        print("Emails not sent (", len(not_found_emails_in_logs), "):", sep = "")
+        self.printEmails(sorted(not_found_emails_in_logs), 4)
 
         del found_emails_in_logs
         del not_found_emails_in_logs
@@ -62,13 +69,13 @@ class EmailReader:
 
     def is_valid_email(self, line):
         if line.count('@') == 1 and\
-                    line.find('@') >= 1 and\
-                    line.rfind('.') - line.find('@') >= 1 and\
-                    len(line) - line.rfind('.') - 1 >= 1 and len(line) - line.rfind('.') - 1 <= 4:# and line[-line.rfind('.'):].isalnum()
-                    if line not in self.list_of_correct_emails:
-                        self.list_of_correct_emails.append(line)
+            line.find('@') >= 1 and\
+            line.rfind('.') - line.find('@') >= 1 and\
+            len(line) - line.rfind('.') - 1 >= 1 and len(line) - line.rfind('.') - 1 <= 4:# and line[-line.rfind('.'):].isalnum()
+            if line not in self.list_of_correct_emails:
+                self.list_of_correct_emails.append(line)
         else:
-                    if line not in self.list_of_incorrect_emails:
+            if line not in self.list_of_incorrect_emails:
                         self.list_of_incorrect_emails.append(line)
 
     def read_all_emails_from_directory(self, directory):
@@ -79,7 +86,7 @@ class EmailReader:
             all_lines = file.readlines()
 
             for line in all_lines:
-                line = line[:-1]
+                line = line.rstrip('\n')
                 self.is_valid_email(line)
             file.close()
 
