@@ -1,4 +1,4 @@
-# Recruitment-task-2022
+# Recruitment-task-2022 ŁUKASZ RUZICKI
 This is the task in the recruitment process for the position of Intern Python Developer at Profil Software. 
 
 To run the program, open main.py in IDE that can run Python scripts e.g. Visual Studio Code or you can run the Linux terminal.  </br>
