@@ -32,7 +32,7 @@ You can use few options at the same time, e.g.: <b> python main.py -s agustin -i
 
 Compared my output with given:
 
-Task 1# gives: "Invalid emails (8)". There is wrong answer in the "task_1_answer.txt" because the "com" is there 3 times. It should be there only once.
-Task 2# same output.
-Task 3# same output.
-Task 4# same output.
+Task 1# gives: "Invalid emails (8)" not "Invalid emails (10)". Probably there is wrong answer in the "task_1_answer.txt" provided by recruiter because the "com" is there 3 times. It should be there only once. </br>
+Task 2# same output. </br>
+Task 3# same output. </br>
+Task 4# same output. </br>
