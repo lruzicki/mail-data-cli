@@ -1,6 +1,7 @@
 from EmailReader import *
 from setup import *
 import sys
+
 emailReader = EmailReader(directory)
 
 if __name__ == "__main__":
