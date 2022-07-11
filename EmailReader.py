@@ -6,16 +6,16 @@ from pyparsing import dict_of
 
 class EmailReader:
 
-    def __init__(self):
+    def __init__(self, directory):
         self.list_of_correct_emails = []
-        self.list_of_incorrect_emails = []       
+        self.list_of_incorrect_emails = []
+        self.read_all_emails_from_directory(directory)
 
     def printEmails(self, emails_list, space):
         for single_mail in emails_list:
             print(single_mail.rjust(len(single_mail) + space))
 
-    def incorrect_emails(self, directory):
-        self.read_all_emails_from_directory(directory)
+    def incorrect_emails(self):
         print("Invalid emails (",len(self.list_of_incorrect_emails),"):", sep = "")
         self.printEmails(self.list_of_incorrect_emails, 4)
 
