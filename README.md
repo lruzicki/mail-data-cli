@@ -28,6 +28,8 @@ If you do not provide any arguments while running the script ("python main.py") 
 
 ![image](https://user-images.githubusercontent.com/56487722/178326971-c6c24617-e086-4023-af01-cd29b2607c49.png)
 
+You can use few options at the same time, e.g.: <b> python main.py -s agustin -ic </b>
+
 Compared my output with given:
 
 Task 1# gives: "Invalid emails (8)". There is wrong answer in the "task_1_answer.txt" because the "com" is there 3 times. It should be there only once.
